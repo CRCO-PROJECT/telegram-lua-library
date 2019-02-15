@@ -1,12 +1,12 @@
 # Telegram-Bot
  Lua Library for the Telegram-API 
 
-#installing
+# installing
 
 Install luarocks and : `git`, `lua5.2`, , `liblua` , `serpent` , `dkjson` , `lua-requests` , `lunajson` , `luasocket` , `ltn12` , `luasec` ,  `redis-lua`.
 
 
-##Using : 
+## Using : 
 - Import `LUA-LIB.lua` into the bot.
 - Call the functions.
 
