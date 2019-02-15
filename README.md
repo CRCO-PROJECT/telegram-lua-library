@@ -1,4 +1,4 @@
-# Telegram-Bot
+# Telegram-Bot - Beta
  Lua Library for the Telegram-API 
 
 # installing
