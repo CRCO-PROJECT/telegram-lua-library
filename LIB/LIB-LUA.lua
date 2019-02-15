@@ -246,7 +246,7 @@ end
 
 
   sendPhoto = function(chat_id, photo, caption)
-  	local send = bot_url..MAIN.token..'/SendPhoto'
+  	local send = bot_url..MAIN.token..'/sendPhoto'
   	local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "photo=@'..photo..'" -F "caption='..caption..'"'
   	return io.popen(curl_command):read('*all')
   end
@@ -265,7 +265,7 @@ return REQ(Rep)
              return REQ(Rep)
     end
   sendPhotoURL = function(chat_id, photo, caption)
-        	local send = bot_url..MAIN.token..'/SendPhoto'
+        	local send = bot_url..MAIN.token..'/sendPhoto'
 	local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "photo='..photo..'" -F "caption='..caption..'"'
 	return io.popen(curl_command):read('*all')
 end
@@ -412,7 +412,7 @@ UTI.markdown = markdown
     if result then
   MOD.getupdatebot(result)
   end
-   if result.message and result.message.text then
+   if result.message then
                  msg = result.message
   msg.content = {}
     msg.content.text = msg.text
