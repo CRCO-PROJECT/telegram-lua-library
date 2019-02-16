@@ -7,7 +7,7 @@ Install luarocks and : `git`, `lua5.2`, , `liblua` , `serpent` , `dkjson` , `lua
 
 
 ## Using : 
-- Import `LUA-LIB.lua` into the bot.
+- Import `telegram-bot.lua` into the bot.
 - Call the functions.
 
 See example script below.
@@ -15,7 +15,7 @@ See example script below.
 
 ```lua
  token = '' -- TOKEN
-   local BOT, MOD = require("./LIB/LIB-LUA").initialize(token)
+   local BOT, MOD = require("./LIB/telegram-bot").initialize(token)
      MOD.getMessage_ = function (msg)
   if msg.content.text == 'ping' then
   
