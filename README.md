@@ -19,7 +19,7 @@ See example script below.
      MOD.getMessage_ = function (msg)
   if msg.content.text == 'ping' then
   
-        sendText(msg.on.chat_id,msg.on.id,"`PONG`",'md')
+        BOT.sendText(msg.on.chat_id,msg.on.id,"`PONG`",'md')
 end
          end
 MOD.RUNING()
