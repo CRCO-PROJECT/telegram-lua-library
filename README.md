@@ -17,7 +17,6 @@ See example script below.
  token = '' -- TOKEN
    local BOT, MOD = require("./LIB/LIB-LUA").initialize(token)
      MOD.getMessage_ = function (msg)
-if msg.on.chat_type == "supergroup"  then
   if msg.content.text == 'ping' then
      key = {}
        key.inline_keyboard = {
@@ -28,7 +27,6 @@ if msg.on.chat_type == "supergroup"  then
         BOT.sendInline(msg.on.chat_id, 'PONG',key, msg.on.id, 'md')
 end
          end
-           end
 MOD.RUNING()
 ```
 
