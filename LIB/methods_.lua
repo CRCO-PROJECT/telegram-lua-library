@@ -147,9 +147,14 @@ sendMedia(chat_id,encode_json.encode(profilephotos),msg_id)
 end
 
 
-sendDocument = function(chat_id,name)
+sendDocumentPath = function(chat_id,ii,name,cap,markdown)
+if markdown == 'md' or markdown == 'markdown' then
+ps = 'Markdown'
+elseif markdown == 'html' then
+pss = 'HTML'
+end
 local send = bot_url..MAIN.token..'/sendDocument'
-local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "document=@'..name..'"'
+local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "reply_to_message_id='..ii..'" -F "caption='..cap..'" -F "parse_mode='..ps..'" -F "document=@'..name..'"'
 return io.popen(curl_command):read('*all')
 end
 exportChatInviteLink = function(chat_id)
@@ -274,7 +279,7 @@ end
 
 
                             sendPhoto = function(chat_id, photo, caption)
-                        local send = bot_url..MAIN.token..'/SendPhoto'
+                        local send = bot_url..MAIN.token..'/sendPhoto'
                             local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "photo=@'..photo..'" -F "caption='..caption..'"'
                                     return io.popen(curl_command):read('*all')
 end
@@ -404,6 +409,7 @@ end
               MAIN.sendChatAction = sendChatAction
                 MAIN.sendContact = sendContact
                    MAIN.sendDocument = sendDocument
+                                MAIN.sendDocumentPath = sendDocumentPath
                     MAIN.sendInline = sendInline
                       MAIN.sendLocation = sendLocation
                         MAIN.sendPhotoURL = sendPhotoURL
