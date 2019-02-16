@@ -18,13 +18,8 @@ See example script below.
    local BOT, MOD = require("./LIB/LIB-LUA").initialize(token)
      MOD.getMessage_ = function (msg)
   if msg.content.text == 'ping' then
-     key = {}
-       key.inline_keyboard = {
-      {
-   {text = 'PING', callback_data="pong"}
-     }
-       }
-        BOT.sendInline(msg.on.chat_id, 'PONG',key, msg.on.id, 'md')
+  
+        sendText(msg.on.chat_id,msg.on.id,"`PONG`",'md')
 end
          end
 MOD.RUNING()
