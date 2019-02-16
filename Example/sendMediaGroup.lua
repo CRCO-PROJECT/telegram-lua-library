@@ -1,6 +1,5 @@
     token = '' -- TOKEN
-      MsgTime = os.time() - 5
-            local BOT, MOD = require("./LIB/LIB-LUA").initialize(token)
+            local BOT, MOD = require("./LIB/telegram-bot").initialize(token)
                     MOD.getMessage_ = function (msg)
                     Array =   {  -- Array of InputMediaPhoto
                         {                                                                                                                   
