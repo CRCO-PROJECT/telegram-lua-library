@@ -1,7 +1,7 @@
 token = '  ' -- TOKEN
  BOT, MOD = require("./LIB/telegram-bot").initialize(token)
   MOD.get_callback_query = function (msg)
-      if msg.content.text == 'pong' then
+      if msg.content.text == 'pong_1' then
           old_text = msg.content.old_text 
             new_text = msg.on.sender_firstname
               if not old_text:match('(.*)'..new_text..'(.*)') then
