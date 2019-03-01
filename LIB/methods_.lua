@@ -6,8 +6,7 @@
       encode_json = require("dkjson")
             decode_json  = require("lunajson")
   serpent = require('serpent')
-        requests = require('requests')
-       rs = require "requests"
+  
        color = {
          black = {30, 40},
                red = {31, 41},
@@ -53,8 +52,8 @@
             end
   parameter = {'CRCO Starting'}
       local REQ=function(url)
-          local dat, res = rs.get(url)
-            local tab = decode_json.decode(dat.text)
+          local data =  https.request(url)
+            local tab = decode_json.decode(data)
             if tab.description then
         vardump_2(tab.description)
         end
