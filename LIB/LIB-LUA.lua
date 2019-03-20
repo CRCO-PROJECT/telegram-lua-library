@@ -59,7 +59,7 @@
 
                        data.content.old_text = data.message.text
                              data.reply_on_id = data.message.reply_to_message.message_id
-                                    data.onreply_sender_firstname = data.message.reply_to_message.from.first_name 
+                                    data.on.reply_sender_firstname = data.message.reply_to_message.from.first_name 
                          data.on.reply_sender_username = data.message.reply_to_message.from.username
                                 data.on.reply_sender_lastname = data.message.reply_to_message.from.last_name or ''
                                   data.on.reply_sender_user_id = data.message.reply_to_message.from.id
