@@ -52,8 +52,10 @@
             end
   parameter = {'CRCO Starting'}
       local REQ=function(url)
+     
           local data =  https.request(url)
             local tab = decode_json.decode(data)
+            
             if tab.description then
         vardump_2(tab.description)
         end
@@ -146,16 +148,27 @@ sendMedia(chat_id,encode_json.encode(profilephotos),msg_id)
 end
 
 
-sendDocumentPath = function(chat_id,ii,name,cap,markdown)
-if markdown == 'md' or markdown == 'markdown' then
-ps = 'Markdown'
-elseif markdown == 'html' then
-pss = 'HTML'
-end
-local send = bot_url..MAIN.token..'/sendDocument'
-local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "reply_to_message_id='..ii..'" -F "caption='..cap..'" -F "parse_mode='..ps..'" -F "document=@'..name..'"'
-return io.popen(curl_command):read('*all')
-end
+    sendDocumentPath = function(chat_id,ii,name,cap,markdown)
+                if markdown == 'md' or markdown == 'markdown' then
+        ps = 'Markdown'
+    elseif markdown == 'html' then
+        ps = 'HTML'
+            end
+                local send = bot_url..MAIN.token..'/sendDocument'
+                        local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "reply_to_message_id='..ii..'" -F "caption='..cap..'" -F "parse_mode='..ps..'" -F "document=@'..name..'"'
+                    return io.popen(curl_command):read('*all')
+                end
+sendDocumentURL = function(chat_id,ii,name,cap,markdown)
+            if markdown == 'md' or markdown == 'markdown' then
+                    ps = 'Markdown'
+                    elseif markdown == 'html' then
+            ps = 'HTML'
+            end
+                local send = bot_url..MAIN.token..'/sendDocument'
+                    local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "reply_to_message_id='..ii..'" -F "caption='..cap..'" -F "parse_mode='..ps..'" -F "document='..name..'"'
+                        return io.popen(curl_command):read('*all')
+                    end
+
 exportChatInviteLink = function(chat_id)
 url = bot_url..MAIN.token..'/exportChatInviteLink?chat_id='..chat_id
 return REQ(url)
@@ -214,7 +227,7 @@ end
         chat_id,
             user_id,
                     can_send_messages,
-                        can_sendmedia_messages,
+                        can_send_media_messages,
                             can_send_other_messages,
                         can_add_webpagepreviews,
                         untildate
@@ -277,9 +290,16 @@ end
                                   end
 
 
-                            sendPhoto = function(chat_id, photo, caption)
+                            sendPhoto = function(chat_id, ii,photo, caption,markdown)
+                            if markdown == 'md' or markdown == 'markdown' then
+ps = 'Markdown'
+elseif markdown == 'html' then
+ps = 'HTML'
+end
+
                         local send = bot_url..MAIN.token..'/sendPhoto'
-                            local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "photo=@'..photo..'" -F "caption='..caption..'"'
+                    
+                            local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "reply_to_message_id='..ii..'" -F "photo=@'..photo..'" -F "parse_mode='..ps..'" -F "caption='..caption..'"'
                                     return io.popen(curl_command):read('*all')
 end
 
@@ -296,10 +316,18 @@ end
                                                                   end
                                              return REQ(Rep)
                                         end
-                                                                                sendPhotoURL = function(chat_id, photo, caption)
-                                                                         local send = bot_url..MAIN.token..'/sendPhoto'
-                                                                local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "photo='..photo..'" -F "caption='..caption..'"'
-                                                            return io.popen(curl_command):read('*all')
+                                                                                sendPhotoURL = function(chat_id,ii, photo, caption,markdown)
+                                                                                if markdown == 'md' or markdown == 'markdown' then
+                                                                                ps = 'Markdown'
+                                                                                elseif markdown == 'html' then
+                                                                                ps = 'HTML'
+                                                                                end
+                                                                                
+                                                                                                        local send = bot_url..MAIN.token..'/sendPhoto'
+                                                                                                    
+                                                                                                            local curl_command = 'curl -s "'..send..'" -F "chat_id='..chat_id..'" -F "reply_to_message_id='..ii..'" -F "photo='..photo..'" -F "parse_mode='..ps..'" -F "caption='..caption..'"'
+                                                                                                                    return io.popen(curl_command):read('*all')
+                                                            
                                                     end
                                             sendVideo=function(chat_id,video,caption,supports_streaming)
                                         local send = bot_url..MAIN.token..'/sendVideo'
@@ -407,8 +435,8 @@ end
          MAIN.sendAudio = sendAudio
               MAIN.sendChatAction = sendChatAction
                 MAIN.sendContact = sendContact
-                   MAIN.sendDocument = sendDocument
                                 MAIN.sendDocumentPath = sendDocumentPath
+                                MAIN.sendDocumentURL = sendDocumentURL
                     MAIN.sendInline = sendInline
                       MAIN.sendLocation = sendLocation
                         MAIN.sendPhotoURL = sendPhotoURL
