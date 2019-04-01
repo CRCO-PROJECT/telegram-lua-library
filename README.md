@@ -1,6 +1,8 @@
 # Telegram-Bot - 1.0.0.9
  Lua Library for the Telegram-API 
 
+# [TeleGram Group](https://t.me/joinchat/I_3jG0bAXYHn1IM0kTld5g)
+
 # installing
 
 Install luarocks and : `git`, `lua5.2`, , `liblua` , `serpent` , `dkjson` , `lua-requests` , `lunajson` , `luasocket` , `ltn12` , `luasec` ,  `redis-lua`., `md5` , `xml`
