@@ -149,6 +149,10 @@ end
 
 
     sendDocumentPath = function(chat_id,ii,name,cap,markdown)
+        assert(chat_id, printRed"Missing required variable chat_id")
+                assert(ii, printRed"Missing required variable msg_id")
+                        assert(name, printRed"Missing required variable path")
+        
                 if markdown == 'md' or markdown == 'markdown' then
         ps = 'Markdown'
     elseif markdown == 'html' then
@@ -159,6 +163,10 @@ end
                     return io.popen(curl_command):read('*all')
                 end
 sendDocumentURL = function(chat_id,ii,name,cap,markdown)
+        assert(ii, printRed"Missing required variable msg_id")
+                assert(chat_id, printRed"Missing required variable chat_id")
+                        assert(name, printRed"Missing required variable path")
+
             if markdown == 'md' or markdown == 'markdown' then
                     ps = 'Markdown'
                     elseif markdown == 'html' then
@@ -169,34 +177,36 @@ sendDocumentURL = function(chat_id,ii,name,cap,markdown)
                         return io.popen(curl_command):read('*all')
                     end
 
-exportChatInviteLink = function(chat_id)
-url = bot_url..MAIN.token..'/exportChatInviteLink?chat_id='..chat_id
-return REQ(url)
-end
-kickChatMember = function(chat_id,user_user)
-local url = bot_url..MAIN.token..'/kickChatMember?chat_id='..chat_id..'&user_id='..user_id
-return REQ(url)
+        exportChatInviteLink = function(chat_id)
+        assert(chat_id, printRed"Missing required variable chat_id")
+
+        url = bot_url..MAIN.token..'/exportChatInviteLink?chat_id='..chat_id
+                return REQ(url)
+                                end
+                kickChatMember = function(chat_id,user_user)
+                 url = bot_url..MAIN.token..'/kickChatMember?chat_id='..chat_id..'&user_id='..user_id
+                return REQ(url)
 end 
-editInlineQuery =  function( message_id, text, keyboard,markdown)
-local Rep =  bot_url..MAIN.token.. '/editMessageText?&inline_message_id='..message_id..'&text=' .. URL.escape(text)
-if markdown == 'md' or markdown == 'markdown' then
-Rep = Rep..'&parse_mode=Markdown'
+                editInlineQuery =  function( message_id, text, keyboard,markdown)
+                         Rep =  bot_url..MAIN.token.. '/editMessageText?&inline_message_id='..message_id..'&text=' .. URL.escape(text)
+                if markdown == 'md' or markdown == 'markdown' then
+                        Rep = Rep..'&parse_mode=Markdown'
 elseif markdown == 'html' then
-Rep = Rep..'&parse_mode=HTML'
+                Rep = Rep..'&parse_mode=HTML'
 end
-if keyboard then
-Rep=Rep..'&reply_markup='..URL.escape(encode_json.encode(keyboard))
+                if keyboard then
+                        Rep=Rep..'&reply_markup='..URL.escape(encode_json.encode(keyboard))
 end
-return REQ(Rep)
+                return REQ(Rep)
 end
 
-editMessageText=  function(chat_id, message_id, text, keyboard, markdown)
-assert(chat_id, printRed"Missing required variable chat_id")
-assert(message_id, printRed"Missing required variable message_id")
-assert(text, printRed"Missing required variable text")
-  local url = bot_url..MAIN.token..'/editMessageText?chat_id='..chat_id ..'&message_id='..message_id..'&text='..URL.escape(text)
-if markdown then
-     url = url.. '&parse_mode=Markdown'
+                editMessageText=  function(chat_id, message_id, text, keyboard, markdown)
+                        assert(chat_id, printRed"Missing required variable chat_id")
+                                assert(message_id, printRed"Missing required variable message_id")
+                                        assert(text, printRed"Missing required variable text")
+                                                 url = bot_url..MAIN.token..'/editMessageText?chat_id='..chat_id ..'&message_id='..message_id..'&text='..URL.escape(text)
+                                        if markdown then
+                  url = url.. '&parse_mode=Markdown'
          end
                 url = url.. '&disable_web_page_preview=true'
         if keyboard then
