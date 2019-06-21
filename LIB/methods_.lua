@@ -146,8 +146,11 @@ end
 sendMedia(chat_id,encode_json.encode(profilephotos),msg_id)
 
 end
-
-
+  leaveChat = function(chat_id)
+                assert(chat_id, printRed"Missing required variable chat_id")
+        local url = bot_url..MAIN.token..'/leaveChat?chat_id='..chat_id
+return REQ(url)
+end
     sendDocumentPath = function(chat_id,ii,name,cap,markdown)
         assert(chat_id, printRed"Missing required variable chat_id")
                 assert(ii, printRed"Missing required variable msg_id")
@@ -463,6 +466,7 @@ UTI.markdown = markdown
                  MAIN.deleteMessage = deleteMessage
                    MAIN.cleanchatlist = cleanchatlist
              MAIN.Restrict = Restrict
+                MAIN.leaveChat = leaveChat
           MAIN.GetUserProFilePhotos = GetUserProFilePhotos
    MAIN.GetUserProFilePhoto = GetUserProFilePhoto
          MAIN.Alert = Alert
