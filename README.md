@@ -17,7 +17,7 @@ See example script below.
 
 ```lua
  token = '' -- TOKEN
-   local BOT, MOD = require("./LIB/telegram-bot").initialize(token)
+   local BOT, MOD = require("LIB.telegram-bot").initialize(token)
      MOD.getMessage_ = function (msg)
   if msg.content.text == 'ping' then
   
