@@ -109,6 +109,12 @@ unpinChatMessage = function(chat_id)
         local url = bot_url..MAIN.token..'/unpinChatMessage?chat_id='..chat_id
         return REQ(url)		
 end 
+setChatDescription = function(cnat_id,description)
+                    assert(chat_id, printRed"Missing required variable chat_id")
+            assert(description, printRed"Missing required variable description")
+        local url = bot_url..MAIN.token..'/setChatDescription?chat_id='..chat_id..'&description='..description
+return REQ(url)		
+        end
 sendMedia =function(chat_id,media,msg_id)
 assert(chat_id, printRed"Missing required variable chat_id")
 assert(media, printRed"Missing required variable limit")
@@ -459,6 +465,8 @@ end
                         MAIN.sendPhotoURL = sendPhotoURL
                           MAIN.sendPhoto = sendPhoto
 UTI.markdown = markdown
+MAIN.setChatDescription = setChatDescription
+MAIN.unpinChatMessage = unpinChatMessage
         UTI.DownloadFile = DownloadFile
          MAIN.answerInlineQuery = answerInlineQuery
           UTI.conv_splitnumber = conv_splitnumber
