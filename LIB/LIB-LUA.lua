@@ -4,7 +4,6 @@
 ------------------------------------
 ---------RUN function-----------
   checkUpdate = function(result)
-  MAIN.vardump(result)
     if result then
   MOD.getupdatebot(result)
   end
@@ -33,6 +32,8 @@
           end
       msg.on.time = os.clock()
           MOD.getMessage_(msg)
+          MAIN.vardump(msg)
+
         elseif result.edited_message then
           msg = result.edited_message
           msg.content = {}
