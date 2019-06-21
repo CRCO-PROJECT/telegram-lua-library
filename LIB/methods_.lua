@@ -101,10 +101,14 @@
               assert(limit, printRed"Missing required variable limit")
               assert(offset, printRed"Missing required variable offset")
 
-local url = bot_url..MAIN.token..'/getUserProfilePhotos?user_id='..user_id..'&offset='..offset..'&limit='..limit
-return REQ(url)		
-
+                local url = bot_url..MAIN.token..'/getUserProfilePhotos?user_id='..user_id..'&offset='..offset..'&limit='..limit
+        return REQ(url)		
 end
+unpinChatMessage = function(chat_id)
+            assert(chat_id, printRed"Missing required variable chat_id")
+        local url = bot_url..MAIN.token..'/unpinChatMessage?chat_id='..chat_id
+        return REQ(url)		
+end 
 sendMedia =function(chat_id,media,msg_id)
 assert(chat_id, printRed"Missing required variable chat_id")
 assert(media, printRed"Missing required variable limit")
