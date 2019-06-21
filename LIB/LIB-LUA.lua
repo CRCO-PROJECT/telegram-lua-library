@@ -1,6 +1,6 @@
 --Function For CRCO API
 --MPORTING 
-  require("./LIB/methods_")      
+  require("LIB.methods_")      
 ------------------------------------
 ---------RUN function-----------
   checkUpdate = function(result)
