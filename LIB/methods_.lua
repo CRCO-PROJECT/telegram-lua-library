@@ -104,6 +104,11 @@
                 local url = bot_url..MAIN.token..'/getUserProfilePhotos?user_id='..user_id..'&offset='..offset..'&limit='..limit
         return REQ(url)		
 end
+                getChatAdministrators = function(chat_id)
+                    assert(chat_id, printRed"Missing required variable chat_id")
+                        local url = bot_url..MAIN.token..'/getChatAdministrators?chat_id='.. chat_id
+        return REQ(url)		
+end
 unpinChatMessage = function(chat_id)
             assert(chat_id, printRed"Missing required variable chat_id")
         local url = bot_url..MAIN.token..'/unpinChatMessage?chat_id='..chat_id
@@ -394,8 +399,16 @@ end
                                 return REQ(url)			
                         end
 getFile=function(file_id)
+                                assert(file_id, printRed"Missing required variable file_id")
+
 local url = bot_url..MAIN.token..'/getFile?file_id='..file_id
 return REQ(url)			
+        end
+        getChatMembersCount = function(chat_id)
+                                assert(chat_id, printRed"Missing required variable chat_id")
+
+                local url = bot_url..MAIN.token..'/getChatMembersCount?chat_id='.. chat_id
+                        return REQ(url)		
         end
     sendInline=function(chat_id, text, keyboard,reply_to_message_id, markdown)
             local url = bot_url..MAIN.token.. '/sendMessage?chat_id=' .. chat_id
@@ -465,6 +478,8 @@ end
                         MAIN.sendPhotoURL = sendPhotoURL
                           MAIN.sendPhoto = sendPhoto
 UTI.markdown = markdown
+                MAIN.getChatMembersCount = getChatMembersCount
+        MAIN.getChatAdministrators = getChatAdministrators 
 MAIN.setChatDescription = setChatDescription
 MAIN.unpinChatMessage = unpinChatMessage
         UTI.DownloadFile = DownloadFile
