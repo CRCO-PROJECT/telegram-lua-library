@@ -1,5 +1,5 @@
 
- require("LIB.LIB-LUA")   
+ require("Telegram-Bot.LIB.LIB-LUA")   
 local RUNING = function(update_id,limit, timeout)
     while true do 
         timeout = timeout or 0
