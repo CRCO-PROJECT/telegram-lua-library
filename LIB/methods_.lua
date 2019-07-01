@@ -166,6 +166,18 @@ end
         local url = bot_url..MAIN.token..'/leaveChat?chat_id='..chat_id
 return REQ(url)
 end
+sendPoll = function(chat_id,question,options,disable_notification,reply_to_message_id,reply_markup)
+    assert(chat_id, printRed"Missing required variable chat_id")
+     assert(options, printRed"Missing required variable options")
+         assert(question, printRed"Missing required variable question")
+            assert(reply_to_message_id, printRed"Missing required variable msg_id")
+              assert(disable_notification, printRed"Missing required variable disable_notification")    
+                  request_url = bot_url..MAIN.token..'/sendPoll?chat_id='..chat_id..'&question='..question..'&options='..options..'&disable_notification='..disable_notification..'&reply_to_message_id='..reply_to_message_id
+                        if reply_markup then
+                            request_url=request_url..'&reply_markup='..URL.escape(encode_json.encode(keyboard))
+        end
+        return REQ(request_url)	
+    end
     sendDocumentPath = function(chat_id,ii,name,cap,markdown)
         assert(chat_id, printRed"Missing required variable chat_id")
                 assert(ii, printRed"Missing required variable msg_id")
