@@ -174,7 +174,7 @@ sendPoll = function(chat_id,question,options,disable_notification,reply_to_messa
               assert(disable_notification, printRed"Missing required variable disable_notification")    
                   request_url = bot_url..MAIN.token..'/sendPoll?chat_id='..chat_id..'&question='..question..'&options='..options..'&disable_notification='..disable_notification..'&reply_to_message_id='..reply_to_message_id
                         if reply_markup then
-                            request_url=request_url..'&reply_markup='..URL.escape(encode_json.encode(keyboard))
+                            request_url=request_url..'&reply_markup='..URL.escape(encode_json.encode(reply_markup))
         end
         return REQ(request_url)	
     end
@@ -505,6 +505,7 @@ MAIN.unpinChatMessage = unpinChatMessage
                  MAIN.deleteMessage = deleteMessage
                    MAIN.cleanchatlist = cleanchatlist
              MAIN.Restrict = Restrict
+        MAIN.sendPoll = sendPoll 
                 MAIN.leaveChat = leaveChat
           MAIN.GetUserProFilePhotos = GetUserProFilePhotos
    MAIN.GetUserProFilePhoto = GetUserProFilePhoto
