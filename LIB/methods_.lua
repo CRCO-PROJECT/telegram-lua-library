@@ -51,18 +51,19 @@
             return MAIN, MOD
             end
   parameter = {'CRCO Starting'}
-      local REQ=function(url)
-     
-          local data =  https.request(url)
-            local tab = decode_json.decode(data)
-            
+       REQ=function(url)
+           data =  https.request(url)
+          
+        
+             tab = decode_json.decode(data)
+
             if tab.description then
         vardump_2(tab.description)
         end
-        return tab 
+ return tab
+
 
      end
-
 
         getUpdate = function(offset,limit, timeout)
                 local url = bot_url..MAIN.token..'/getUpdates?timeout='..timeout
@@ -109,7 +110,27 @@ end
                         local url = bot_url..MAIN.token..'/getChatAdministrators?chat_id='.. chat_id
         return REQ(url)		
 end
-unpinChatMessage = function(chat_id)
+stopPoll = function(chat_id,message_id,reply_markup)
+    assert(chat_id, printRed"Missing required variable chat_id")
+            assert(message_id, printRed"Missing required variable message_id")
+                  request_url = bot_url..MAIN.token..'/stopPoll?chat_id='..chat_id..'&message_id='..message_id
+                        if reply_markup then
+                            request_url=request_url..'&reply_markup='..URL.escape(encode_json.encode(reply_markup))
+        end
+        return REQ(request_url)	
+    end
+    sendPoll = function(chat_id,question,options,disable_notification,reply_to_message_id,reply_markup)
+        assert(chat_id, printRed"Missing required variable chat_id")
+                assert(reply_to_message_id, printRed"Missing required variable msg_id")
+                  assert(disable_notification, printRed"Missing required variable disable_notification")    
+                      request_url = bot_url..MAIN.token..'/sendPoll?chat_id='..chat_id..'&question='..question..'&options='..options..'&disable_notification='..disable_notification..'&reply_to_message_id='..reply_to_message_id
+                            if reply_markup then
+                                request_url=request_url..'&reply_markup='..URL.escape(encode_json.encode(keyboard))
+            end
+            return REQ(request_url)	
+        end
+
+              unpinChatMessage = function(chat_id)
             assert(chat_id, printRed"Missing required variable chat_id")
         local url = bot_url..MAIN.token..'/unpinChatMessage?chat_id='..chat_id
         return REQ(url)		
@@ -166,18 +187,6 @@ end
         local url = bot_url..MAIN.token..'/leaveChat?chat_id='..chat_id
 return REQ(url)
 end
-sendPoll = function(chat_id,question,options,disable_notification,reply_to_message_id,reply_markup)
-    assert(chat_id, printRed"Missing required variable chat_id")
-     assert(options, printRed"Missing required variable options")
-         assert(question, printRed"Missing required variable question")
-            assert(reply_to_message_id, printRed"Missing required variable msg_id")
-              assert(disable_notification, printRed"Missing required variable disable_notification")    
-                  request_url = bot_url..MAIN.token..'/sendPoll?chat_id='..chat_id..'&question='..question..'&options='..options..'&disable_notification='..disable_notification..'&reply_to_message_id='..reply_to_message_id
-                        if reply_markup then
-                            request_url=request_url..'&reply_markup='..URL.escape(encode_json.encode(reply_markup))
-        end
-        return REQ(request_url)	
-    end
     sendDocumentPath = function(chat_id,ii,name,cap,markdown)
         assert(chat_id, printRed"Missing required variable chat_id")
                 assert(ii, printRed"Missing required variable msg_id")
@@ -499,13 +508,14 @@ MAIN.unpinChatMessage = unpinChatMessage
           UTI.conv_splitnumber = conv_splitnumber
                       CRCO.initialize = initialize
                MAIN.getChat = getChat
+               MAIN.sendPoll = sendPoll
+               MAIN.stopPoll = stopPoll
            MAIN.promoteChatMember = promoteChatMember
           MAIN.restrictChatMember = restrictChatMember
                     MAIN.getMe = getMe
                  MAIN.deleteMessage = deleteMessage
                    MAIN.cleanchatlist = cleanchatlist
              MAIN.Restrict = Restrict
-        MAIN.sendPoll = sendPoll 
                 MAIN.leaveChat = leaveChat
           MAIN.GetUserProFilePhotos = GetUserProFilePhotos
    MAIN.GetUserProFilePhoto = GetUserProFilePhoto
