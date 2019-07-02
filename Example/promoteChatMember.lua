@@ -1,5 +1,5 @@
   token = '' -- TOKEN
-       local BOT, MOD = require("./LIB/telegram-bot").initialize(token)
+       local BOT, MOD = require("Telegram-Bot.LIB.telegram-bot").initialize(token)
             MOD.getMessage_ = function (msg)
     if msg.content.text == 'promoteuser' then
     can_change_info = 0
