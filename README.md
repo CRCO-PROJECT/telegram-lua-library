@@ -1,7 +1,7 @@
-# Telegram-Bot - 1.0.0.9
+# Telegram-Bot - 2.0.0.0 - last update > 2 July 2019
  Lua Library for the Telegram-API 
 
-# [TeleGram Group](https://t.me/joinchat/I_3jG0bAXYHn1IM0kTld5g)
+# [TeleGram Group](https://t.me/crcopr)
 
 # installing
 
