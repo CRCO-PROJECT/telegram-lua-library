@@ -1,5 +1,5 @@
   token = '' -- TOKEN
-       local BOT, MOD = require("./LIB/telegram-bot").initialize(token)
+       local BOT, MOD = require("Telegram-Bot.LIB.telegram-bot").initialize(token)
             MOD.getMessage_ = function (msg)
     if msg.content.text == 'mute user' then
       TIME = 1*60*60 -- TIME MUTEUSER -- HOUR
