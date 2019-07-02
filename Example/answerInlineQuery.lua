@@ -1,5 +1,5 @@
   token = '' -- TOKEN
-   BOT, MOD = require("./LIB/telegram-bot").initialize(token)
+   BOT, MOD = require("Telegram-Bot.LIB.telegram-bot").initialize(token)
     MOD.get_inline_query = function (msg)
      if msg.content.text == 'pong' then
       keyboard = {}
