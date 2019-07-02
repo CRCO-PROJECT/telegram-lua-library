@@ -13,6 +13,12 @@
                      caption = 'test',
                      parse_mode = "Markdown"                                                                                        --Type input                                                                                           
        }     
+     key = {}
+                               key.inline_keyboard = {
+                     {
+                 {text = 'OK', callback_data="_"}
+                 }
+             }
      BOT.editMessageMedia(msg.on.chat_id,msg.on.reply_to_message_id,Array,key)
            
     end
