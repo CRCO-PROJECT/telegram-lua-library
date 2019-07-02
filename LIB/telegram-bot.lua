@@ -11,7 +11,7 @@ local RUNING = function(update_id,limit, timeout)
                                     update = updates.result[i]
                                         update_id = update.update_id + 1
 
-                                            checkUpdate(update)
+                                            MOD.checkUpdate(update)
                                     end
                         end
                 end
