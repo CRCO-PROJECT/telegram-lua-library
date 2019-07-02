@@ -147,15 +147,16 @@ msg.left_chat = {}
               data.on.sender_firstname = data.from.first_name
                   data.on.sender_username = data.from.username
                         data.on.sender_lastname = data.from.last_name or ''
-                        data.on.sender_user_id = data.from.id
+                        data.on.sender_userid = data.from.id
                  if data.message then
                  data.on.chat_id = data.message.chat.id
                       data.on.chat_title = data.message.chat.title
                       data.on.user_code = data.message.from.language_code
                       data.on.chat_type = data.message.chat.type                    
     end  
+    MAIN.vardump(data)
+
                    MOD.get_callback_query(data)
-                                    MAIN.vardump(data)
 
          elseif result.inline_query then
            QI = result.inline_query
