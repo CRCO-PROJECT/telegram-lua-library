@@ -3,7 +3,7 @@
   require("Telegram-Bot.LIB.methods_")      
 ------------------------------------
 ---------RUN function-----------
-  checkUpdate = function(result)
+  MOD.checkUpdate = function(result)
     if result then
 
   MOD.getupdatebot(result)
