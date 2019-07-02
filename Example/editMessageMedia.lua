@@ -13,7 +13,7 @@
                      caption = 'test',
                      parse_mode = "Markdown"                                                                                        --Type input                                                                                           
        }     
-     BOT.editMessageMedia(msg.on.chat_id,msg.on.id,Array,key)
+     BOT.editMessageMedia(msg.on.chat_id,msg.on.reply_to_message_id,Array,key)
            
     end
 end
