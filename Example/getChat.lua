@@ -1,7 +1,7 @@
          token = '' -- TOKEN
-             local BOT, MOD = require("./LIB/telegram-bot").initialize(token)
+             local BOT, MOD = require("Telegram-Bot.LIB.telegram-bot").initialize(token)
                 MOD.getMessage_ = function (msg)
-     if msg.content.text == 'ping' then
+     if msg.content.text == 'get chat' then
           BOT.getChat(msg.on.chat_id)
          
     end
