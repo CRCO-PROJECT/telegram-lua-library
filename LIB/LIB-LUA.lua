@@ -3,13 +3,13 @@
   require("Telegram-Bot.LIB.methods_")      
 ------------------------------------
 ---------RUN function-----------
-  MOD.checkUpdate = function(result)
+  MOD.checkUpdate = function(result)  --
     if result then
 
   MOD.getupdatebot(result)
   end
  
-   if result.message then
+   if result.message then --
                  msg = result.message
   msg.content = {}
     msg.content.text = msg.text
@@ -37,7 +37,7 @@ msg.left_chat = {}
                    msg.new_user.firstname = msg.new_chat_members.first_name:gsub("%s", "_")
               msg.new_user.lastname =  msg.new_chat_member.last_name:gsub("%s", "_")  or nil
          end 
-        end
+        
         msg.content.caption = msg.caption
             msg.on = {}
             
@@ -85,8 +85,8 @@ msg.left_chat = {}
                                         msg.poll_question = msg.reply_to_message.poll.question
                                 end
                                         msg.on.reply_sender_lastname = msg.reply_to_message.from.last_name:gsub("%s", "_") or nil
-          end
-         
+          
+                              end
       msg.on.time = os.clock()
           MOD.getMessage_(msg)
           MAIN.vardump(msg)
