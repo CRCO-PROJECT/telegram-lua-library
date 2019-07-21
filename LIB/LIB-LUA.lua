@@ -28,14 +28,14 @@ msg.left_chat = {}
   msg.left_chat.userid = msg.left_chat_member.id
     msg.left_chat.username = msg.left_chat_member.username
           msg.left_chat.firstname = msg.left_chat_member.first_name:gsub("%s", "_")
-                msg.left_chat.lastname =  msg.left_chat_member.last_name:gsub("%s", "_")  or ''
+                msg.left_chat.lastname =  (msg.left_chat_member.last_name  or '' ):gsub("%s", "_")
           end
           if msg.new_chat_member then 
             msg.new_user = {}
                msg.new_user.id = msg.new_chat_member.id
                  msg.new_user.username = msg.new_chat_members.username
                    msg.new_user.firstname = msg.new_chat_members.first_name:gsub("%s", "_")
-              msg.new_user.lastname =  msg.new_chat_member.last_name:gsub("%s", "_")  or ''
+              msg.new_user.lastname =  (msg.new_chat_member.last_name  or '' ):gsub("%s", "_")
          end 
         
         msg.content.caption = msg.caption
