@@ -46,6 +46,8 @@ msg.left_chat = {}
                     msg.on.sender_userid = msg.from.id
                         msg.on.sender_username = msg.from.username
                             msg.on.sender_firstname = msg.from.first_name:gsub("%s", "_")
+                            msg.on.sender_lastname = msg.from.last_name:gsub("%s", "_") or nil
+
                 end
                               msg.on.id = msg.message_id
                                 if msg.forward_from then
@@ -103,7 +105,7 @@ msg.left_chat = {}
             msg.on.sender_userid = msg.from.id
               msg.on.sender_username = msg.from.username
                   msg.on.sender_firstname = msg.from.first_name:gsub("%s", "_") 
-                      msg.on.sender_lastname = msg.from.last_name:gsub("%s", "_")  or nil
+                      msg.on.sender_lastname = msg.from.last_name:gsub("%s", "_") or nil
           MOD.getMessage_(msg)
         
         elseif result.callback_query then
