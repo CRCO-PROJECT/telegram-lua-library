@@ -46,7 +46,7 @@ msg.left_chat = {}
                     msg.on.sender_userid = msg.from.id
                         msg.on.sender_username = msg.from.username
                             msg.on.sender_firstname = msg.from.first_name:gsub("%s", "_")
-                            msg.on.sender_lastname = msg.from.last_name:gsub("%s", "_") or ''
+                            msg.on.sender_lastname = (msg.from.last_name or '' ):gsub("%s", "_")
 
                 end
                               msg.on.id = msg.message_id
@@ -54,14 +54,14 @@ msg.left_chat = {}
                                   msg.forwarded_from = {}
                                    msg.forwarded_from.firstname = msg.forward_from.first_name:gsub("%s", "_")
                                       msg.forwarded_from.userid = msg.forward_from.id
-                                          msg.forwarded_from.lastname = msg.forward_from.last_name:gsub("%s", "_")  or ''
+                                          msg.forwarded_from.lastname = (msg.forward_from.last_name or '' ):gsub("%s", "_")
                                       
                                       end
                                       if msg.forward_from_chat and msg.forward_from_chat.type == 'channel' then
                                             msg.forwarded_from_channel = {}
                                                 msg.forwarded_from_channel.id = msg.forward_from_chat.id
                                                  msg.forwarded_from_channel.msg_id = msg.forward_from_message_id
-                                                   msg.forwarded_from_channel.signature = msg.forward_signature:gsub("%s", "_") 
+                                                   msg.forwarded_from_channel.signature = (msg.forward_signature or '' ):gsub("%s", "_") 
                                                        msg.forwarded_from_channel.title = msg.forward_from_chat.title:gsub("%s", "_")
                                                        msg.forwarded_from_channel.username = msg.forward_from_chat.username
                                         end
@@ -75,7 +75,7 @@ msg.left_chat = {}
                          msg.forwarded_from = {}
                            msg.forwarded_from.id = msg.reply_to_message.forward_from.id
                                  msg.forwarded_from.firstname = msg.reply_to_message.forward_from.first_name:gsub("%s", "_") 
-                                    msg.forwarded_from.lastname = msg.reply_to_message.forward_from.last_name:gsub("%s", "_")  or ''
+                                    msg.forwarded_from.lastname = (msg.reply_to_message.forward_from.last_name or '' ):gsub("%s", "_")
                       end
                       
                           msg.on.reply_sender_userid = msg.reply_to_message.from.id
@@ -86,7 +86,7 @@ msg.left_chat = {}
                                 msg.poll_closed = msg.reply_to_message.poll.is_closed
                                         msg.poll_question = msg.reply_to_message.poll.question
                                 end
-                                        msg.on.reply_sender_lastname = msg.reply_to_message.from.last_name:gsub("%s", "_") or ''
+                                        msg.on.reply_sender_lastname = (msg.reply_to_message.from.last_name  or '' ):gsub("%s", "_")
           
                               end
       msg.on.time = os.clock()
@@ -105,7 +105,7 @@ msg.left_chat = {}
             msg.on.sender_userid = msg.from.id
               msg.on.sender_username = msg.from.username
                   msg.on.sender_firstname = msg.from.first_name:gsub("%s", "_") 
-                      msg.on.sender_lastname = msg.from.last_name:gsub("%s", "_") or ''
+                      msg.on.sender_lastname = (msg.from.last_name or '' ):gsub("%s", "_")
           MOD.getMessage_(msg)
         
         elseif result.callback_query then
@@ -121,7 +121,7 @@ msg.left_chat = {}
                              data.reply_on_id = data.message.reply_to_message.message_id
                                     data.on.reply_sender_firstname = data.message.reply_to_message.from.first_name:gsub("%s", "_")
                          data.on.reply_sender_username = data.message.reply_to_message.from.username
-                                data.on.reply_sender_lastname = data.message.reply_to_message.from.last_name:gsub("%s", "_") or ''
+                                data.on.reply_sender_lastname = (data.message.reply_to_message.from.last_name or '' ):gsub("%s", "_")
                                   data.on.reply_sender_userid = data.message.reply_to_message.from.id
                                      data.on.reply_chat_id = data.message.reply_to_message.chat.id
                                         data.on.reply_chatt_itle = data.message.reply_to_message.chat.title:gsub("%s", "_")
@@ -133,7 +133,7 @@ msg.left_chat = {}
                        end
               data.on.sender_firstname = data.from.first_name:gsub("%s", "_")
                   data.on.sender_username = data.from.username
-                        data.on.sender_lastname = data.from.last_name:gsub("%s", "_") or ''
+                        data.on.sender_lastname = (data.from.last_name  or '' ):gsub("%s", "_")
                         data.on.sender_userid = data.from.id
                  if data.message then
                  data.on.chat_id = data.message.chat.id
