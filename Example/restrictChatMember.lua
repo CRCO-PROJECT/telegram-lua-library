@@ -7,7 +7,7 @@
             send_media_messages = 0
                 send_other_messages = 0
                   send_LINK  = 0
-	                  	 BOT.restrictChatMember(msg.on.chat_id,msg.on.sender_user_id,send_message,send_media_messages,send_other_messages,send_LINK,tonumber(msg.date+TIME))
+	                  	 BOT.restrictChatMember(msg.on.chat_id,msg.on.sender_userid,send_message,send_media_messages,send_other_messages,send_LINK,tonumber(msg.date+TIME))
                            BOT.sendText(msg.on.chat_id,msg.on.id,"`DONE`",'md')
       end
          end
