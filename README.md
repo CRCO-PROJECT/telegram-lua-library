@@ -1,11 +1,11 @@
-# Telegram-Bot - 2.0.0.0 - last update > 2 July 2019
+# Telegram-Bot - 2.1.4.4 - last update > 5 aug 2019
  Lua Library for the Telegram-API 
 
-# [Telegram Group](https://t.me/crcopr)
+# [Telegram Group](https://t.me/crco_chat)
 
 # installing
 
-Install luarocks and : `git`, `lua5.2`, , `liblua` , `serpent` , `dkjson` , `lua-requests` , `lunajson` , `luasocket` , `ltn12` , `luasec` ,  `redis-lua`., `md5` , `xml`
+Install luarocks and : `git`, `lua5.3`, , `liblua` , `serpent` , `dkjson` , `lua-requests` , `lunajson` , `luasocket` , `ltn12` , `luasec` ,  `redis-lua`., `md5` , `xml`
 
 
 ## Using : 
@@ -17,7 +17,7 @@ See example script below.
 
 ```lua
  token = '' -- TOKEN
-   local BOT, MOD = require("Telegram-Bot.LIB.telegram-bot").initialize(token)
+   local BOT, MOD = require("telegram-lua-library.LIB.telegram-bot").initialize(token)
      MOD.getMessage_ = function (msg)
   if msg.content.text == 'ping' then
   
